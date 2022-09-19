@@ -9,6 +9,18 @@ export default function FilmeDestaque({item}){
         let minutos = Math.trunc(((parseInt(total)/60)/60)*1000)
         return hora+"h"+minutos+"m"
     }
+    function generos(g){
+        let tipos = ''
+        for(var i = 0; i< g.length; i++){
+            if(i === 0){
+                tipos = tipos + g[i].name
+            }
+            else{
+                tipos = tipos +", "+g[i].name
+            }
+        }
+        return tipos
+    }
     return(
         <section className="home" style={{
             backgroundSize:"cover",
@@ -17,14 +29,25 @@ export default function FilmeDestaque({item}){
         }}>
             <div className="home--vertical">
                 <div className="home--horizontal">
-                <div className="home--titulo">{item.title}</div>
-                <div className="home--info">
-                    <div className="home--points">{item.vote_average} pontos</div>
-                    <div className="home--ano">{(item.release_date.split('-'))[0]}</div>
-                    <div className="home--duracao">{converterhora(item.runtime)}</div>
+                    <div className="home--titulo">{item.title}</div>
+                    <div className="home--info">
+                        <div className="home--points">{item.vote_average} pontos</div>
+                        <div className="home--ano">{(item.release_date.split('-'))[0]}</div>
+                        <div className="home--duracao">{converterhora(item.runtime)}</div>
+                    </div>
+                    <div className="home--description">{item.overview}</div>
+                    <div className="home--botoes">
+                        <div className="assistir">
+                            <a href="https://youtube.com">▶ Assistir</a>
+                        </div>
+                        <div  className="add">
+                            <a href="https://youtube.com">+ Adiocionar</a>
+                        </div>
+                    </div>
+                    <div className="home--generos"><strong>Gêneros: {generos(item.genres)}</strong></div>
+
                 </div>
-                <div className="home--description">{item.overview}</div>
-                </div>
+
             </div>
 
         </section>
