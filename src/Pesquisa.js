@@ -60,6 +60,21 @@ export default{
             },
 
         ]
+    },
+    filmeHome: async (filmeid, tipo) =>{
+        var info = {}
+        switch(tipo){
+            case 'movie':
+                info = puxar_dados("movie/"+filmeid+"?&language=pt-BR&api_key="+API_KEY)
+            break;
+            case 'tv':
+                info = puxar_dados("tv/"+filmeid+"?&language=pt-BR&api_key="+API_KEY)
+            break;
+            default:
+                info = null
+            break;
+        }
+        return info
     }    
 
 }

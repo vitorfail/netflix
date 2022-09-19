@@ -1,0 +1,22 @@
+.home{
+    height: 100vh;
+}
+.home--vertical{
+    height: inherit;
+    width: inherit;
+    background-image: linear-gradient(to top, black 7%, transparent 90%);
+}
+.home--horizontal{
+    height: inherit;
+    width: inherit;
+    background-image: linear-gradient(to right, black 20%, transparent 80%);
+}
+.home--titulo{
+    padding-top: 123px;
+    padding-left: 123px;
+    font-size: 70px;
+}
+.home--description{
+    width: 50%;
+    text-align: justify;
+}
