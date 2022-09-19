@@ -1,0 +1,29 @@
+.linha_filme{
+    margin-bottom: 30px;
+}
+.linha_filme h2{
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+    margin-left: 30px;
+}
+.linha_filme--area{
+    overflow-x: hidden;
+}
+.linha_filme--filme{
+
+    display: inline-block;
+    width: 150px;
+}
+.linha_filme--filme img{
+    width: 100%;
+    transform: scale(0.9);
+    transition: all ease 0.2s;
+}
+.linha_filme--filme img:hover{
+    transform: scale(1);
+    cursor: pointer;
+}
+.linha_filme--total{
+    width: 9999999px;
+}
