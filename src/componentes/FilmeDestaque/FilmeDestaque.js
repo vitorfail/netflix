@@ -6,8 +6,8 @@ export default function FilmeDestaque(){
     const {filmePrincipal} = React.useContext(Contexto)
     function converterhora(total){
         if(total.runtime !== undefined){
-            let hora = Math.trunc(parseInt(total)/60)
-            let minutos = Math.trunc(((parseInt(total)/60)/60)*1000)
+            let hora = Math.trunc(parseInt(total.runtime)/60)
+            let minutos = Math.trunc(((parseInt(total.runtime)/60)/60)*1000)
             return hora+"h"+minutos+"m"
         }
         else{
@@ -38,6 +38,14 @@ export default function FilmeDestaque(){
             return y.first_air_date.split('-')[0]
         }
     }
+    function Checkname(name){
+        if( name.title!== undefined){
+            return name.title
+        }
+        else{
+            return name.name
+        }
+    }
     return(
         <section className="home" style={{
             backgroundSize:"cover",
@@ -46,7 +54,7 @@ export default function FilmeDestaque(){
         }}>
             <div className="home--vertical">
                 <div className="home--horizontal">
-                    <div className="home--titulo">{filmePrincipal.title}</div>
+                    <div className="home--titulo">{Checkname(filmePrincipal)}</div>
                     <div className="home--info">
                         <div className="home--points"><strong>{filmePrincipal.vote_average} pontos</strong></div>
                         <div className="home--ano">{ano(filmePrincipal)}</div>

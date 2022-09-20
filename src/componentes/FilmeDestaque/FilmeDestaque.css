@@ -34,7 +34,11 @@
 }
 .home--points{
     display: inline-block;
-    color: rgb(8, 110, 8);
+    color: rgb(9, 163, 9);
+}
+.home--points strong{
+    font-weight: bold;
+    font-family: Roboto media;
 }
 .home--points,
 .home--ano, 
