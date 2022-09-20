@@ -11,6 +11,7 @@ function App() {
   const [filmeInicial, setfilmeInicial] = useState([]);
   const [ check, setcheck] = useState(null)
   const [blackheader, setblackheader] = useState(false)
+  const [loading, setloading] = useState('loading mostrar')
   useEffect( () =>{
     const load = async () => {
       const lista = await Pesquisa.homelist()
@@ -22,6 +23,7 @@ function App() {
       let filmed = await Pesquisa.filmeHome(principal.id, 'movie')
       setfilmeInicial(filmed)
       setcheck('ALGO')
+      setloading('loading')
     }
     load()
   }, [])
@@ -51,10 +53,11 @@ function App() {
       <footer>
         <h3>Feito com ❤ por Vitor Manoel</h3>
         <h3>Todo os direitos reservados para a Netflix</h3>
+        <h3>Chama no zap</h3>
       </footer>
-      <div className='loading'>
-        
-      </div>
+        <div className={loading}>
+          <img alt="loading" src='https://media.filmelier.com/noticias/br/2020/03/Netflix_LoadTime.gif'></img>
+        </div>
     </div>
   );
 }

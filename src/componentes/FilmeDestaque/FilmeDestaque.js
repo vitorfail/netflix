@@ -45,11 +45,8 @@ export default function FilmeDestaque({item}){
                         </div>
                     </div>
                     <div className="home--generos"><strong>Gêneros: </strong>{generos(item.genres)}</div>
-
                 </div>
-
             </div>
-
         </section>
     )
 }

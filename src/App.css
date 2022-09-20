@@ -30,3 +30,27 @@ footer{
   padding-top: 23px;
   padding-bottom: 23px;
 }
+.loading{
+  transition: all ease 0.8s;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index:99;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: black;
+}
+.loading.mostrar{
+  display: flex;
+}
+.loading img{
+  height: 100%;
+  width: 100%;
+}
+@media screen and (max-width:900px){
+  .listas{
+    margin-top: 15px;
+  }
+}
