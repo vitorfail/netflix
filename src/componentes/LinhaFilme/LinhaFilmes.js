@@ -3,9 +3,11 @@ import './LinhaFilmes.css'
 import Seta1 from "../../icons/seta1.png"
 import Seta2 from "../../icons/seta2.png"
 import Pesquisa from "../../Pesquisa";
+import { Contexto } from "../StoreProvider";
 
 export default ({titulo, itens}) =>{
     const [scrollx, setscrollx] = useState(-600)
+    const {setfilmePrincipal, setloading} = React.useContext(Contexto)
     function setaesquerda(){
         let x = scrollx + Math.round(window.innerWidth/2)
         if(x > 0){
@@ -21,8 +23,33 @@ export default ({titulo, itens}) =>{
         }
         setscrollx(x)
     }
-    async function pesquisar(id){
-        let p = await Pesquisa.filmeHome(id)
+    async function pesquisar(id, media){
+        setloading('loading mostrar')
+        let ident = String(id)
+        if(ident !== undefined && ident !== null){
+            let d = (String(ident)).split('-')
+            if(d[1] === 'tudo'){
+                let g = await Pesquisa.filmeHome(d[0], media)
+                setfilmePrincipal(g)
+            }
+            else{
+                if(d[1] === 'filme'){
+                    let p = await Pesquisa.filmeHome(d[0], 'movie')
+                    setfilmePrincipal(p)
+                }
+                else{
+                    let s = await Pesquisa.filmeHome(d[0], 'tv')
+                    setfilmePrincipal(s)
+                }
+            }
+            setTimeout(() => {
+                setloading('loading');
+              }, "3000")
+              setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }, "3000")
+        }
+
     }
     return (
         <div className="linha_filme">
@@ -40,7 +67,7 @@ export default ({titulo, itens}) =>{
                     }>
                     {itens.results.length > 0 && itens.results.map((item, keys) =>(
                         <div key={keys} className="linha_filme--filme">
-                            <img alt="serie" id={item.id} onClick={(event) => pesquisar(event.currentTarget.id)} src={"https://image.tmdb.org/t/p/w300"+item.poster_path}/>
+                            <img alt="serie" id={item.id+'-'+itens.tipo} className={item.media_type} onClick={(event) => pesquisar(event.currentTarget.id, event.currentTarget.className)} src={"https://image.tmdb.org/t/p/w300"+item.poster_path}/>
                         </div>
                     ))}
                 </div>

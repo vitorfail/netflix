@@ -53,4 +53,10 @@ footer{
   .listas{
     margin-top: 15px;
   }
+  .loading{
+    height: 100vh;
+  }
+  .loading img{
+    height: 60vw;
+  }
 }

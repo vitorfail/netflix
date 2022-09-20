@@ -5,10 +5,18 @@ import { Contexto } from "../StoreProvider";
 export default function FilmeDestaque(){
     const {filmePrincipal} = React.useContext(Contexto)
     function converterhora(total){
-
-        let hora = Math.trunc(parseInt(total)/60)
-        let minutos = Math.trunc(((parseInt(total)/60)/60)*1000)
-        return hora+"h"+minutos+"m"
+        if(total.runtime !== undefined){
+            let hora = Math.trunc(parseInt(total)/60)
+            let minutos = Math.trunc(((parseInt(total)/60)/60)*1000)
+            return hora+"h"+minutos+"m"
+        }
+        else{
+            let temporada ='temporada'
+            if(total.last_episode_to_air.season_number >1 ){
+                temporada = 'temporadas'
+            }
+            return total.last_episode_to_air.season_number+' '+temporada
+        }
     }
     function generos(g){
         let tipos = ''
@@ -22,6 +30,14 @@ export default function FilmeDestaque(){
         }
         return tipos
     }
+    function ano(y){
+        if(y.release_date !== undefined){
+            return y.release_date.split('-')[0]
+        }
+        else{
+            return y.first_air_date.split('-')[0]
+        }
+    }
     return(
         <section className="home" style={{
             backgroundSize:"cover",
@@ -33,8 +49,8 @@ export default function FilmeDestaque(){
                     <div className="home--titulo">{filmePrincipal.title}</div>
                     <div className="home--info">
                         <div className="home--points"><strong>{filmePrincipal.vote_average} pontos</strong></div>
-                        <div className="home--ano">{(filmePrincipal.release_date.split('-'))[0]}</div>
-                        <div className="home--duracao">{converterhora(filmePrincipal.runtime)}</div>
+                        <div className="home--ano">{ano(filmePrincipal)}</div>
+                        <div className="home--duracao">{converterhora(filmePrincipal)}</div>
                     </div>
                     <div className="home--description">{filmePrincipal.overview}</div>
                     <div className="home--botoes">

@@ -8,11 +8,10 @@ import FilmeDestaque from './componentes/FilmeDestaque/FilmeDestaque';
 import { Contexto } from './componentes/StoreProvider';
 
 function App() {
-  const {setfilmePrincipal} = React.useContext(Contexto)
+  const {setfilmePrincipal, loading, setloading} = React.useContext(Contexto)
   const [lista_filmes, setlista_filmes] = useState([]);
   const [ check, setcheck] = useState(null)
   const [blackheader, setblackheader] = useState(false)
-  const [loading, setloading] = useState('loading mostrar')
   useEffect( () =>{
     const load = async () => {
       const lista = await Pesquisa.homelist()

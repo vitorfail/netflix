@@ -19,14 +19,13 @@ async function puxar_dados(tipo, media){
                     d.tipo = 'filme'
                 }
                 else{
-                    d.tipo = 'serie'
+                    d.tipo = 'series'
                 }
             }
         }
         else{
             d.tipo = 'nenhum'
         }
-        console.log(d)
         dados= d
     }).catch(error => {
         dados = "Erro no servidor"
