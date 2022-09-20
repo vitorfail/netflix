@@ -25,7 +25,7 @@
     cursor: pointer;
 }
 .linha_filme--total{
-    width: 9999999px;
+    transition: all ease 0.3s;
 }
 .seta2, .seta1{
     transition: all ease 0.2s;

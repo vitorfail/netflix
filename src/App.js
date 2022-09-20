@@ -48,6 +48,13 @@ function App() {
           <LinhaFilmes key={item.titulo_pesquisa} titulo={item.title} itens={item.items}/>
         ))}
       </section>
+      <footer>
+        <h3>Feito com ❤ por Vitor Manoel</h3>
+        <h3>Todo os direitos reservados para a Netflix</h3>
+      </footer>
+      <div className='loading'>
+        
+      </div>
     </div>
   );
 }

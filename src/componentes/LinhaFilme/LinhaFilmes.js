@@ -4,26 +4,30 @@ import Seta1 from "../../icons/seta1.png"
 import Seta2 from "../../icons/seta2.png"
 
 export default ({titulo, itens}) =>{
-    const [scrollx, setscrollx] = useState(-400)
+    const [scrollx, setscrollx] = useState(-600)
     function setaesquerda(){
-        console.log('passou por aqui')
-        let x = scrollx + 150
+        let x = scrollx + Math.round(window.innerWidth/2)
         if(x > 0){
             x = 0
         }
-        setscrollx(0)
+        setscrollx(x)
     }
     function setadireita(){
-
+        let x = scrollx - Math.round(window.innerWidth/2)
+        let listw = itens.results.length * 150
+        if(window.innerWidth - listw > x){
+            x = (window.innerWidth - listw) -60
+        }
+        setscrollx(x)
     }
     return (
         <div className="linha_filme">
             <h2>{titulo}</h2>
-            <div className="seta1" onClick={() => setaesquerda()}>
-                <img src={Seta1} style={{width:"34px"}} ></img>
+            <div className="seta1" onClick={() => setadireita()}>
+                <img src={Seta1} alt="seta" style={{width:"34px"}} ></img>
             </div>
-            <div className="seta2" onClick={() => setadireita()}>
-                <img src={Seta2} style={{width:"34px"}} ></img>
+            <div className="seta2" onClick={() => setaesquerda()}>
+                <img src={Seta2} alt="seta" style={{width:"34px"}} ></img>
             </div>
             <div className="linha_filme--area">
                 <div className="linha_filme--total" style={

@@ -22,3 +22,11 @@ body{
 .listas{
   margin-top: -55px;
 }
+footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 23px;
+  padding-bottom: 23px;
+}
