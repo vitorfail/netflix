@@ -23,9 +23,9 @@ function App() {
       let filmed = await Pesquisa.filmeHome(principal.id, 'movie')
       setfilmeInicial(filmed)
       setcheck('ALGO')
-      setloading('loading')
     }
     load()
+    setloading('loading')
   }, [])
   useEffect(()=>{
     const scrollevent = () =>{
