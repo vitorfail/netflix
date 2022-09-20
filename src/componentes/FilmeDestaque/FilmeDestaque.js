@@ -1,8 +1,9 @@
 import React from "react";
 import "./FilmeDestaque.css"
+import { Contexto } from "../StoreProvider";
 
-
-export default function FilmeDestaque({item}){
+export default function FilmeDestaque(){
+    const {filmePrincipal} = React.useContext(Contexto)
     function converterhora(total){
 
         let hora = Math.trunc(parseInt(total)/60)
@@ -25,17 +26,17 @@ export default function FilmeDestaque({item}){
         <section className="home" style={{
             backgroundSize:"cover",
             backgroundPosition: "center",
-            backgroundImage:"url(https://image.tmdb.org/t/p/original"+item.backdrop_path+")"
+            backgroundImage:"url(https://image.tmdb.org/t/p/original"+filmePrincipal.backdrop_path+")"
         }}>
             <div className="home--vertical">
                 <div className="home--horizontal">
-                    <div className="home--titulo">{item.title}</div>
+                    <div className="home--titulo">{filmePrincipal.title}</div>
                     <div className="home--info">
-                        <div className="home--points"><strong>{item.vote_average} pontos</strong></div>
-                        <div className="home--ano">{(item.release_date.split('-'))[0]}</div>
-                        <div className="home--duracao">{converterhora(item.runtime)}</div>
+                        <div className="home--points"><strong>{filmePrincipal.vote_average} pontos</strong></div>
+                        <div className="home--ano">{(filmePrincipal.release_date.split('-'))[0]}</div>
+                        <div className="home--duracao">{converterhora(filmePrincipal.runtime)}</div>
                     </div>
-                    <div className="home--description">{item.overview}</div>
+                    <div className="home--description">{filmePrincipal.overview}</div>
                     <div className="home--botoes">
                         <div className="assistir">
                             <a href="https://youtube.com">▶ <strong>Assistir</strong></a>
@@ -44,7 +45,7 @@ export default function FilmeDestaque({item}){
                             <a href="https://youtube.com">+ <strong>Adiocionar</strong></a>
                         </div>
                     </div>
-                    <div className="home--generos"><strong>Gêneros: </strong>{generos(item.genres)}</div>
+                    <div className="home--generos"><strong>Gêneros: </strong>{generos(filmePrincipal.genres)}</div>
                 </div>
             </div>
         </section>

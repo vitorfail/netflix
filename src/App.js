@@ -5,10 +5,11 @@ import React,{useEffect, useState} from 'react';
 import Pesquisa from './Pesquisa';
 import LinhaFilmes from './componentes/LinhaFilme/LinhaFilmes';
 import FilmeDestaque from './componentes/FilmeDestaque/FilmeDestaque';
+import { Contexto } from './componentes/StoreProvider';
 
 function App() {
+  const {setfilmePrincipal} = React.useContext(Contexto)
   const [lista_filmes, setlista_filmes] = useState([]);
-  const [filmeInicial, setfilmeInicial] = useState([]);
   const [ check, setcheck] = useState(null)
   const [blackheader, setblackheader] = useState(false)
   const [loading, setloading] = useState('loading mostrar')
@@ -21,7 +22,7 @@ function App() {
       let i = Math.floor(Math.random() * (index - 1 + 1) + 1);
       let principal = list[0].items.results[i]
       let filmed = await Pesquisa.filmeHome(principal.id, 'movie')
-      setfilmeInicial(filmed)
+      setfilmePrincipal(filmed)
       setcheck('ALGO')
     }
     load()
@@ -47,10 +48,10 @@ function App() {
   return (
     <div className="App">
       <Header exibir={blackheader}></Header>
-      {check?<FilmeDestaque item={filmeInicial}></FilmeDestaque>: null}
+      {check?<FilmeDestaque></FilmeDestaque>: null}
       <section className='listas'>
         {lista_filmes.map((item, key) =>(
-          <LinhaFilmes key={item.titulo_pesquisa} titulo={item.title} itens={item.items}/>
+          <LinhaFilmes key={item.titulo_pesquisa} tipo={item.tipo} titulo={item.title} itens={item.items}/>
         ))}
       </section>
       <footer>

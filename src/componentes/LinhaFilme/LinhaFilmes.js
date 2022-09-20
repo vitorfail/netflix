@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import './LinhaFilmes.css'
 import Seta1 from "../../icons/seta1.png"
 import Seta2 from "../../icons/seta2.png"
+import Pesquisa from "../../Pesquisa";
 
 export default ({titulo, itens}) =>{
     const [scrollx, setscrollx] = useState(-600)
@@ -20,6 +21,9 @@ export default ({titulo, itens}) =>{
         }
         setscrollx(x)
     }
+    async function pesquisar(id){
+        let p = await Pesquisa.filmeHome(id)
+    }
     return (
         <div className="linha_filme">
             <h2>{titulo}</h2>
@@ -36,7 +40,7 @@ export default ({titulo, itens}) =>{
                     }>
                     {itens.results.length > 0 && itens.results.map((item, keys) =>(
                         <div key={keys} className="linha_filme--filme">
-                            <img alt="serie" src={"https://image.tmdb.org/t/p/w300"+item.poster_path}/>
+                            <img alt="serie" id={item.id} onClick={(event) => pesquisar(event.currentTarget.id)} src={"https://image.tmdb.org/t/p/w300"+item.poster_path}/>
                         </div>
                     ))}
                 </div>
