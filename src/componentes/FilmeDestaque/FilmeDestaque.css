@@ -12,8 +12,10 @@
     display: flex;
     flex-direction: column;
     padding-left: 45px;
+    padding-top: 15px;
+    padding-bottom: 45px;
     justify-content: center;
-    background-image: linear-gradient(to right, black 20%, transparent 80%);
+    background-image: linear-gradient(to right, black 38%, transparent 62%);
 }
 .home--titulo{
     font-weight: bold;
@@ -21,7 +23,7 @@
 }
 .home--description{
     font-size: 18px;
-    width: 50%;
+    width: 45%;
     text-align: justify;
 }
 .home--info{

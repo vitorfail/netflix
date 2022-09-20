@@ -31,20 +31,20 @@ export default function FilmeDestaque({item}){
                 <div className="home--horizontal">
                     <div className="home--titulo">{item.title}</div>
                     <div className="home--info">
-                        <div className="home--points">{item.vote_average} pontos</div>
+                        <div className="home--points"><strong>{item.vote_average} pontos</strong></div>
                         <div className="home--ano">{(item.release_date.split('-'))[0]}</div>
                         <div className="home--duracao">{converterhora(item.runtime)}</div>
                     </div>
                     <div className="home--description">{item.overview}</div>
                     <div className="home--botoes">
                         <div className="assistir">
-                            <a href="https://youtube.com">▶ Assistir</a>
+                            <a href="https://youtube.com">▶ <strong>Assistir</strong></a>
                         </div>
                         <div  className="add">
-                            <a href="https://youtube.com">+ Adiocionar</a>
+                            <a href="https://youtube.com">+ <strong>Adiocionar</strong></a>
                         </div>
                     </div>
-                    <div className="home--generos"><strong>Gêneros: {generos(item.genres)}</strong></div>
+                    <div className="home--generos"><strong>Gêneros: </strong>{generos(item.genres)}</div>
 
                 </div>
 

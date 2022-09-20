@@ -27,3 +27,26 @@
 .linha_filme--total{
     width: 9999999px;
 }
+.seta2, .seta1{
+    transition: all ease 0.2s;
+    opacity: 0;
+    z-index: 1;
+    position: absolute;
+    width: 34px;
+    height: 225px;
+    display: flex;
+    align-items: center;
+    background: rgb(126, 126, 126, 0.3);
+}
+.seta2:hover, .seta1:hover{
+    cursor: pointer;
+}
+.seta1{
+    right: 0;
+}
+.seta2{
+    left: 0;
+}
+.linha_filme:hover .seta1, .linha_filme:hover .seta2{
+    opacity: 1;
+}

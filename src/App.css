@@ -1,7 +1,7 @@
 *{
   box-sizing: border-box;
   margin: 0;
-  font-family: Roboto media;
+  font-family: Roboto normal;
 }
 body{
   background: black;
@@ -18,4 +18,7 @@ body{
 @font-face {
   font-family: "Roboto media";
   src: url("./font/Roboto-Regular.ttf");
+}
+.listas{
+  margin-top: -55px;
 }
