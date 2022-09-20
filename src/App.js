@@ -25,7 +25,10 @@ function App() {
       setcheck('ALGO')
     }
     load()
-    setloading('loading')
+    setTimeout(() => {
+      setloading('loading');
+    }, "3000")
+    
   }, [])
   useEffect(()=>{
     const scrollevent = () =>{
