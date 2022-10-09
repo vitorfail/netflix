@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# Netflix clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esse projeto foi feito usando o Reactjs(https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Dependências
 
-In the project directory, you can run:
+Esse projeto usa como dependência o a biblioteca 'axios' para a requisição das api´s
 
 ### `npm start`
 
